@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+
+      <div class="form-check form-check-inline list-group">
+        <span class="anchor">Select Countries</span>
+        <div  class="list-group-item" *ngFor="let country of countries">
+              <input class="form-check-input" type="checkbox" 
+                    [checked]="country.isChecked"
+                    (change)="country.isChecked = !country.isChecked">{{country.value}}
+        </div>
+      </div>
+
+        <div class="form-check form-check-inline list-group">
+          <span class="anchor">Select States</span>
+          <div class="list-group-item" *ngFor="let state of states">
+              <input class="form-check-input" type="checkbox" 
+                      [checked]="state.isChecked"
+                      (change)="state.isChecked = !state.isChecked">{{state.display}}
+          </div>
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-primary" (click)="getCustomers()">Filter</button>
+        </div>
+         
+      </div>
+
+    <div class="col-8">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Number</th>
+            <th>Country</th>
+            <th>Country Code</th>
+            <th>State</th>
+            <th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr *ngFor="let customer of customers">
+            <td>{{customer.phoneNumber.number}}</td>	
+            <td>{{customer.phoneNumber.country.name}}</td>	
+            <td>{{customer.phoneNumber.country.code}}</td>	
+            <td *ngIf="customer.phoneNumber.isValid">Valid</td>	  
+            <td *ngIf="!customer.phoneNumber.isValid">Not Valid</td>	    
+          </tr>
+        </tbody>		
+        
+
+      </table>
+    </div>
+  </div>
+</div>
