@@ -1,4 +1,4 @@
-#build and run using Docker
+build and run using Docker
 
 - cd phoneNumbersValidator
 - docker-compose up
